@@ -1,0 +1,242 @@
+/*Google fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+    src: local('Material Icons'),
+      local('MaterialIcons-Regular'),
+      url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
+      url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
+      url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
+  }
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+  
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+  
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+  
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}
+
+
+:root {
+    /*==== colors ====*/
+    --primary-c: #8357E5;
+    --secondary-c: #2E9C60;
+    --tertiary-c: #FF248A;
+
+    --bg-main: #110F14;
+    --bg-secondary: #1c213d;
+    --bg-body-content: rgb(233, 231, 231);
+
+    /*==== responsive tipography ====*/
+    --body-font: 'Poppins', sans-serif;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    box-sizing: border-box;
+    font-family: var(--body-font);
+    font-family: var(--body-font);
+}
+
+header {
+    display: flex;
+    height: 65px;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: var(--bg-main);
+    color: var(--primary-c);
+    font-size: 1.5rem;
+}
+header .right_area {
+    display: flex;
+    padding-right: .5rem;
+    align-items: center;
+}
+
+header .right_area i {
+    padding: .3rem;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+header .user-info {
+    font-size: .6rem;
+    color: #fff;
+    padding-right: 4px;
+    list-style: none;
+    text-align: right;
+}
+
+aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 255px;
+    background-color: var(--bg-main);
+    overflow-x: hidden;
+    overflow-y: auto;
+    transition: width .5s;
+}
+/* top do sidebar */
+aside .logo-datails {
+    display: flex;
+    align-items: center;
+    height: 65px;
+    width: 100%;
+}
+/* botão de menu barras*/
+aside .logo-datails span {
+    font-size: 1.5rem;
+    color: #fff;
+    padding-left: 1rem;
+    cursor: pointer;
+}
+/* logo marca*/
+aside .logo-datails h3 {
+    font-size: 1.0rem;
+    font-weight: 800;
+    color: #fff;
+    padding-left: 2rem;
+    transition: display .5s;
+}
+/* menu lateral */
+aside .sidebar-menu{
+    padding-top: 20px;
+}
+
+/*icone menu link*/
+aside .menu-item i{
+    font-size: 1rem;
+}
+
+/* link do menu */
+aside .menu-item-link {
+    color: #fff;
+    font-size: 1rem;
+    align-items: center;
+    border-radius: 4px;
+    height: 45px;
+    text-decoration: none;
+    padding: 0 0 0 1rem;
+    display: flex;
+    
+}
+
+/* troca de cores do background do menu */
+aside .menu-item-link:hover {
+    background-color: var(--primary-c);
+    color: #fff;
+    
+}
+
+/*nome do link principal de menu */
+aside .menu-item-link span {
+    padding: 0rem .6rem;
+    width: 100%;
+    transition: display .5s;
+}
+
+/* seta de dropdown*/
+aside .menu-item-link span i {
+    float: right;
+    padding-top: 4px;
+    transition: .3s;
+    transition-property: transform;
+}
+/* submenu */
+aside .submenu-item {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-secondary);
+    overflow: hidden;
+    display: none;
+}
+
+aside .submenu-item a{
+    padding-left: 2.6rem;
+    display: flex;
+    align-items: center;
+    height: 35px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: .8rem;
+}
+
+aside .submenu-item a:hover {
+    background-color: var(--primary-c);
+}
+
+/*submenu aberto*/
+aside .menu-item.opened {
+    background-color: var(--primary-c);
+}
+aside .menu-item.opened .menu-item-link span i {
+    transform: rotate(90deg);
+}
+aside .menu-item.opened .submenu-item{
+    display: block;
+}
+
+/* sidebar closed*/
+aside.closed {
+    width: 55px;
+    transition: width .5s;
+}
+
+aside.closed .logo-datails h3{
+    display: none;
+}
+aside.closed .menu-item .menu-item-link span {
+    display: none;
+}
+/* aumenta tamanho dos icones */
+aside.closed .menu-item .submenu-item {
+    display: none;
+}
+/* aumenta tamanho dos icones */
+aside.closed .menu-item i {
+    font-size: 1.5rem;
+}
+/*main content*/
+main {
+    background-color: var(--bg-body-content);
+    position: fixed;
+    top: 65px;
+    left: 255px;
+    width: 100%;
+    height: 100vh;
+    transition: left .5s;
+}
+/*menu fechado main content*/
+aside.closed ~ main {
+    left: 55px;
+    transition: left .5s;
+}

@@ -1,0 +1,7 @@
+.venv
+.env
+.idea
+*.sqlite3
+__pycache__
+staticfiles
+.ipynb_checkpoints/
