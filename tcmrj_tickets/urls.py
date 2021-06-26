@@ -20,5 +20,5 @@ from tcmrj_tickets.core.views import home
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
-    path('ticket/', include('tcmrj_tickets.tickets.urls')),
+    path('tickets/', include('tcmrj_tickets.tickets.urls')),
 ]
