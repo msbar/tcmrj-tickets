@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'test_without_migrations',
     'django_extensions',
+    'widget_tweaks',
     'tcmrj_tickets.core',
     'tcmrj_tickets.tickets',
 ]

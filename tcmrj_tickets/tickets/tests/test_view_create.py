@@ -13,4 +13,4 @@ class TicketsCreateGet(TestCase):
     
     def test_template(self):
         """Must use ticket_create.html"""
-        self.assertTemplateUsed(self.response, 'tickets/ticket_create.html')
+        self.assertTemplateUsed(self.response, 'tickets/tickets_create.html')

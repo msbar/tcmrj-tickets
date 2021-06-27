@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block title %}
+    {% if ticket %}
+        Autaliza Chamado: "{{ ticket.id }}"
+    {% else %}
+        Novo Chamado
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <form method="post">
+            {% csrf_token %}
+            <fieldset class="fieldset-forms row col-6">
+                <legend class="">
+                    {% if ticket %}
+                        Atualiza Chamado: "{{ ticket.id }}"
+                    {% else %}
+                        Cria Novo Chamado
+                    {% endif %}
+                </legend>
+                <div class="col-12">
+                    <label for="{{ form.category.id_for_label }}" class="form-label">{{ form.category.label }}</label>
+                    {{ form.category.errors }}
+                    {{ form.category|add_class:'form-select' }}
+                </div>
+                <div class="col-12">
+                    <label for="{{ form.subcategory.id_for_label }}" class="form-label">{{ form.subcategory.label }}</label>
+                    {{ form.subcategory.errors }}
+                    {{ form.subcategory|add_class:'form-select' }}
+                </div>
+                <div class="col-12">
+                    <label for="{{ form.solver.id_for_label }}" class="form-label">{{ form.solver.label }}</label>
+                    {{ form.solver.errors }}
+                    {{ form.solver|add_class:'form-select' }}
+                </div>
+                <div class="col-12">
+                    <label for="{{ form.description.id_for_label }}" class="form-label">{{ form.description.label }}</label>
+                    {{ form.description.errors }}
+                    {{ form.description|add_class:'form-control' }}
+                </div>
+            </fieldset>
+            <br>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">
+                    <span class="material-icons align-middle">save</span>
+                    <span class="align-middle">Salvar</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
