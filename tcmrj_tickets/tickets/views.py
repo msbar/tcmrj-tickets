@@ -1,6 +1,7 @@
 from tcmrj_tickets.tickets.forms import TicketForm
 from tcmrj_tickets.tickets.models import Category, SubCategory, Ticket
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse_lazy
 from django.http import HttpResponse
 import json
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -18,8 +19,9 @@ def get_subcategory(request):
 
 class TicketCreateView(CreateView):
     template_name = 'tickets/tickets_form.html'
+    model = Ticket
     form_class = TicketForm
-    success_url = 'list'
+    # success_url = reverse_lazy('ticket_list')
 
     def form_valid(self, form):
         form.instance.owner = self.request.user
@@ -27,42 +29,33 @@ class TicketCreateView(CreateView):
 
 class TicketUpdateView(UpdateView):
     template_name = 'tickets/tickets_form.html'
-    ticket = None
+    model = Ticket
     form_class = TicketForm
-    success_url = 'list'
-
+    success_url = reverse_lazy('ticket:list')
+    
     def get_object(self):
         pk = self.kwargs.get("pk")
-        return get_object_or_404(Ticket, id=pk)
-    '''
-    def dispatch(self, request, pk):
-        self.ticket = get_object_or_404(Ticket, id=pk)
-        return super().dispatch(request, pk)
-    
-    def get(self, request, *args, **kwargs):
-        return self.render_to_response({'ticket': self.ticket,
-                                        'form': TicketForm})
-    
-    def form_valid(self, form):
-        return super().form_valid(form)
-
-    def post(self, request, *args, **kwargs):
-        form = self.get_form(data=request.POST)
-        if form.is_valid():
-            form.save()
-            return
-        return self.render_to_response({'ticket': self.ticket,
-                                        'form': TicketForm})
-    '''    
+        return get_object_or_404(Ticket, id=pk)    
 
 
 class TicketListView(ListView):
     template_name = 'tickets/tickets_list.html'
+    model = Ticket
+    paginate_by = 100
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
 
 class TicketDatailView(DetailView):
-    template_name = 'tickets/tickets_datail.html'
-
+    template_name = 'tickets/tickets_detail.html'
+    model = Ticket
+    
+    def get_object(self):
+        pk = self.kwargs.get("pk")
+        return get_object_or_404(Ticket, id=pk)
 
 class TicketDeleteView(DeleteView):
     template_name = 'tickets/tickets_delete.html'
+    model = Ticket
+    success_url = reverse_lazy('ticket:list')

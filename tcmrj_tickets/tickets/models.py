@@ -15,7 +15,7 @@ class Category(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return r('tickets:category_detail', self.pk)
+        return r('tickets:category-detail', self.pk)
 
 class SubCategory(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='subcategory_parent')
@@ -30,7 +30,7 @@ class SubCategory(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return r('tickets:subcategory_detail', self.pk)
+        return r('tickets:subcategory-detail', self.pk)
 
 
 class Solver(models.Model):
@@ -45,7 +45,7 @@ class Solver(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return r('tickets:solver_detail', self.pk)
+        return r('tickets:solver-detail', self.pk)
 
 class Ticket(models.Model):
     STATUS_CHOICES = [
@@ -65,10 +65,10 @@ class Ticket(models.Model):
     class Meta:
         verbose_name_plural = 'Chamados'
         verbose_name = 'chamado'
-        ordering = ['id']
+        ordering = ['-id']
 
     def __str__(self):
         return str(self.id)
 
     def get_absolute_url(self):
-        return r('tickets:ticket_detail', self.pk)
+        return r('tickets:list')
