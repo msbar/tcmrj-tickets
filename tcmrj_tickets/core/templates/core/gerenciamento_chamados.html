@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Gereciamento de Chamados{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row col-12">
+        <h2>Gereciamento de Chamados</h2>
+    </div>
+    <br>
+    <div class="card-footer text-center col-6">
+        <a class="btn btn-primary" href="{% url 'category:list' %}" alt="ver" >
+            <span class="material-icons md-18 align-middle">list</span>
+            <span>Categoria</span>
+        </a>
+        <a class="btn btn-primary" href="{% url 'category:sub_list' %}" alt="ver" >
+            <span class="material-icons md-18 align-middle">list</span>
+            <span>SubCategoria</span>
+        </a>
+        <a class="btn btn-primary" href="{% url 'tickets:solver_list' %}" alt="ver" >
+            <span class="material-icons md-18 align-middle">list</span>
+            <span>Responsável</span>
+        </a>
+    </div>
+    
+</div>
+{% endblock %}

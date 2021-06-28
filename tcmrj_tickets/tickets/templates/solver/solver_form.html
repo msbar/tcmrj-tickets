@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block title %}
+    {% if ticket %}
+        Autaliza Categoria: "{{ category.id }}"
+    {% else %}
+        Nova Categoria
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <form method="post">
+            {% csrf_token %}
+            <fieldset class="fieldset-forms row col-6">
+                <legend class="">
+                    {% if category %}
+                        Atualiza Categoria: "{{ category.id }}"
+                    {% else %}
+                        Nova Categoria
+                    {% endif %}
+                </legend>
+                <div class="col-12">
+                    <label for="{{ form.name.id_for_label }}" class="form-label">{{ form.name.label }}</label>
+                    {{ form.name.errors }}
+                    {{ form.name|add_class:'form-control'}}
+                </div>
+                
+            </fieldset>
+            <br>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">
+                    <span class="material-icons align-middle">save</span>
+                    <span class="align-middle">Salvar</span>
+                </button>
+                <a class="btn btn-secondary" href="{% url 'tickets:solver_list' %}" alt="ver" >
+                    <span class="material-icons md-18 align-middle">arrow_back</span>
+                    <span>voltar</span>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

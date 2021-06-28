@@ -5,7 +5,7 @@
 <div class="sidebar-menu">                    
     <div class="sidebar-menu">
         <div class="menu-item">
-            <a href="{% url 'home' %}" class="menu-item-link">
+            <a href="{% url 'core:home' %}" class="menu-item-link">
                 <i class="material-icons">home</i>
                 <span>Home</span>
             </a>
@@ -18,7 +18,7 @@
             <div class="submenu-item">
                 <a href="{% url 'tickets:list' %}">Consulta de Chamado</a>
                 <a href="{% url 'tickets:create' %}">Abertura de Chamado</a>
-                <a href="#">Gerenciamento de Chamado</a>
+                <a href="{% url 'core:gerenciamento' %}">Gerenciamento de Chamado</a>
             </div>
         </div>
         <div class="menu-item">

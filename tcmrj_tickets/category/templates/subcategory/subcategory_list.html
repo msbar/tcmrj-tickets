@@ -1,62 +1,58 @@
 {% extends "base.html" %}
 
-{% block title %}Lista de Chamados{% endblock %}
+{% block title %}Gereciamento de Chamados - Lista de Categorias{% endblock %}
 
 {% block content %}
 <div class="container">
     <div class="row col-12">
-        <h2>Lista de Chamados</h2>
+        <h2>Gereciamento de Chamados - Lista de Categorias</h2>
     </div>
     <div class="row col-12">
         <table class="table table-light table-striped">
             <thead>
                 <tr>
-                    <th scope="col">Chamado</th>
-                    <th scope="col">Abertura</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">id</th>
                     <th scope="col">Categoria</th>
-                    <th scope="col">Responsável</th>
+                    <th scope="col">Sub Categoria</th>
                     <th scope="col">Ações</th>
                 </tr>
             </thead>
             <tbody>
-                {% for ticket in object_list %}
+                {% for subcategory in object_list %}
                 <tr>
-                    <th scope="row">{{ ticket.id }}</th>
-                    <td>{{ ticket.created_at }}</td>
-                    <td>{{ ticket.status }}</td>
-                    <td>{{ ticket.category }}</td>
-                    <td>{{ ticket.solver }}</td>
+                    <th scope="row">{{ subcategory.id }}</th>
+                    <td>{{ subcategory.category }}</td>
+                    <td>{{ subcategory.name }}</td>
                     <td class="td_actions">
-                        <a class="btn btn-primary" href="{% url 'tickets:detail' ticket.id %}" alt="ver" >
+                        <a class="btn btn-primary" href="{% url 'category:sub_detail' subcategory.id %}" alt="ver" >
                             <span class="material-icons md-18 align-middle">visibility</span>
                             <span>ver</span>
                         </a>
-                        <a class="btn btn-success" href="{% url 'tickets:update' ticket.id %}">
+                        <a class="btn btn-success" href="{% url 'category:sub_update' subcategory.id %}">
                             <span class="material-icons md-18 align-middle">edit</span>
                             <span>editar</span>
                         </a>
-                        <a class="btn btn-danger" href="{% url 'tickets:delete' ticket.id %}">
+                        <a class="btn btn-danger" href="{% url 'category:sub_delete' subcategory.id %}">
                             <span class="material-icons md-18 align-middle">delete</span>
                             <span>deletar</span>
                         </a>
                     </td>
                 </tr>
                 {% empty %}
-                    <p>Não há chamados na base de dados.</p>
+                    <p>Não há categorias na base de dados.</p>
                 {% endfor %}
             </tbody>
         </table>
         {% include "pagination.html" with page=page_obj %}
         <br><br>
     </div>
-    <a class="btn btn-primary" href="{% url 'tickets:create' %}" alt="Adicionar" >
+    <a class="btn btn-primary" href="{% url 'category:sub_create' %}" alt="Adicionar" >
         <span class="material-icons md-18 align-middle">add</span>
-        <span>Adicionar Chamado</span>
+        <span>Adicionar Sub-Categoria</span>
     </a>
     <a class="btn btn-secondary" href="{% url 'core:gerenciamento' %}" alt="ver" >
         <span class="material-icons md-18 align-middle">arrow_back</span>
-        <span>voltar - Gerenciamento</span>
+        <span>voltar - Gerencioamento</span>
     </a>
 </div>
 {% endblock %}

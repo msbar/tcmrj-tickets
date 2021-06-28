@@ -43,8 +43,9 @@ INSTALLED_APPS = [
     'test_without_migrations',
     'django_extensions',
     'widget_tweaks',
-    'tcmrj_tickets.core',
-    'tcmrj_tickets.tickets',
+    'tcmrj_tickets.core.apps.CoreConfig',
+    'tcmrj_tickets.category.apps.CategoryConfig',
+    'tcmrj_tickets.tickets.apps.TicketsConfig',
 ]
 
 MIDDLEWARE = [

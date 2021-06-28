@@ -1,37 +1,37 @@
 {% extends "base.html" %}
 
-{% block title %}Lista de Chamados{% endblock %}
+{% block title %}Lista de Subcategorias{% endblock %}
 
 {% block content %}
 <div class="container">
         <div class="card">
             <h5 class="card-header text-center">
-                Chamado: {{ticket.id}}
+                Categoria: {{subcategory.name}}
             </h5>
             <div class="card-body">
                 <h5 class="card-title">Detalhes</h5>
                 <div class="card-text">
                     <div class="">
-                        <p><b>Abertura: </b>{{ ticket.created_at }}</p>
-                        <p><b>Status: </b>{{ ticket.status }}</p>
-                        <p><b>Categoria: </b>{{ ticket.category }}</p>
-                        <p><b>Sub-Categoria: </b>{% firstof ticket.subcategory "" %}</p>
-                        <p><b>Responsável: </b>{{ ticket.solver }}</p>
-                        <p><b>Descrição:</b></p>
-                        <p>{{ ticket.description }}</p>
+                        
+                        <p><b>id: </b>{{ subcategory.id }}</p>
+                        <p><b>Categoria: </b>{{ subcategory.category }}</p> 
+                        <p><b>Sub Categoria: </b>{{ subcategory.name }}</p>
+                        <p><b>Criador: </b>{{ subcategory.owner }}</p>                 
+                        <p><b>Criado: </b>{{ subcategory.created_at }}</p>
+                        <p><b>Modificado: </b>{{ subcategory.updated_at }}</p>
                     </div>
                 </div>
             </div>
             <div class="card-footer text-center">
-                <a class="btn btn-secondary" href="{% url 'tickets:list' %}" alt="ver" >
+                <a class="btn btn-secondary" href="{% url 'category:sub_list' %}" alt="ver" >
                     <span class="material-icons md-18 align-middle">arrow_back</span>
                     <span>voltar</span>
                 </a>
-                <a class="btn btn-success" href="{% url 'tickets:update' ticket.id %}">
+                <a class="btn btn-success" href="{% url 'category:sub_update' subcategory.id %}">
                     <span class="material-icons md-18 align-middle">edit</span>
                     <span>editar</span>
                 </a>
-                <a class="btn btn-danger" href="{% url 'tickets:delete' ticket.id %}">
+                <a class="btn btn-danger" href="{% url 'category:sub_delete' subcategory.id %}">
                     <span class="material-icons md-18 align-middle">delete</span>
                     <span>deletar</span>
                 </a>

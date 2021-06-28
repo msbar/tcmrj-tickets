@@ -1,18 +1,6 @@
 from django import forms
-from django.forms import fields
-from .models import Category, SubCategory, Solver, Ticket
 
-
-class CategoryForm(forms.ModelForm):
-    class Meta:
-        model = Category
-        fields = ['name']
-
-
-class SubCategoryForm(forms.ModelForm):
-    class Meta:
-        model = SubCategory
-        fields = ['name']
+from .models import Solver, Ticket
 
 
 class SolverForm(forms.ModelForm):
@@ -24,4 +12,4 @@ class SolverForm(forms.ModelForm):
 class TicketForm(forms.ModelForm):
     class Meta:
         model = Ticket
-        fields = ('category', 'subcategory', 'solver', 'description')
+        fields = ['status', 'category', 'subcategory', 'solver', 'description']

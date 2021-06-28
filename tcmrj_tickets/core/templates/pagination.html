@@ -1,0 +1,30 @@
+<nav>
+  	<ul class="pagination pagination-sm justify-content-right">
+		
+		{% if page.has_previous %}
+			<li class="page-item">
+				<a class="page-link" tabindex="-1" aria-disabled="true" href="?page={{ page.previous_page_number }}">Previous</a>
+			</li>
+		{% else %}
+			<li class="page-item disabled">
+				<a class="page-link" tabindex="-1" aria-disabled="true" href="#">Previous</a>
+			</li>
+		{% endif %}
+			
+		
+		<li class="page-item active" aria-current="page">
+			<a class="page-link" href="#">Page {{ page.number }} of {{ page.paginator.num_pages }}.</a>
+		</li>
+
+		
+		{% if page.has_next %}
+			<li class="page-item">
+				<a class="page-link" href="?page={{ page.next_page_number }}">Next</a>
+			</li>
+		{% else %}
+			<li class="page-item disabled">
+				<a class="page-link" tabindex="-1" aria-disabled="true" href="#">Next</a>
+			</li>
+		{% endif %}
+	</ul>
+</nav>

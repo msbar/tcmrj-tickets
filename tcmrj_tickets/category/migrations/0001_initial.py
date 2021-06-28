@@ -10,43 +10,39 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('category', '0001_initial'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Solver',
+            name='Category',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Criado em')),
                 ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Atualizado em')),
-                ('name', models.CharField(max_length=255, verbose_name='Responsável')),
+                ('name', models.CharField(max_length=150, verbose_name='Nome da Categoria')),
                 ('owner', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to=settings.AUTH_USER_MODEL, verbose_name='Criado por')),
             ],
             options={
-                'verbose_name': 'Responsável',
-                'verbose_name_plural': 'Responsáveis',
+                'verbose_name': 'Categoria',
+                'verbose_name_plural': 'Categorias',
                 'ordering': ['name'],
             },
         ),
         migrations.CreateModel(
-            name='Ticket',
+            name='SubCategory',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Criado em')),
                 ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Atualizado em')),
-                ('status', models.CharField(choices=[('Aberto', 'Aberto'), ('Em Andamento', 'Em Andamento'), ('Concluído', 'Concluído')], default='Aberto', max_length=12, verbose_name='Status')),
-                ('description', models.TextField(verbose_name='Descrição')),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, related_name='tickets_category', to='category.category', verbose_name='Categoria')),
+                ('name', models.CharField(max_length=150, verbose_name='Nome da Sub Categoria')),
+                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='subcategory_parent', to='category.category')),
                 ('owner', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to=settings.AUTH_USER_MODEL, verbose_name='Criado por')),
-                ('solver', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='tickets.solver', verbose_name='Responsável')),
-                ('subcategory', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.DO_NOTHING, related_name='tickets_subcategory', to='category.subcategory', verbose_name='Sub Categoria')),
             ],
             options={
-                'verbose_name': 'chamado',
-                'verbose_name_plural': 'Chamados',
-                'ordering': ['-id'],
+                'verbose_name': 'Sub Categoria',
+                'verbose_name_plural': 'Sub Categorias',
+                'ordering': ['name'],
             },
         ),
     ]

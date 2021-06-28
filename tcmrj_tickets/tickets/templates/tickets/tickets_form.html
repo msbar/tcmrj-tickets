@@ -19,9 +19,14 @@
                     {% if ticket %}
                         Atualiza Chamado: "{{ ticket.id }}"
                     {% else %}
-                        Cria Novo Chamado
+                        Novo Chamado
                     {% endif %}
                 </legend>
+                <div class="col-12">
+                    <label for="{{ form.status.id_for_label }}" class="form-label">{{ form.status.label }}</label>
+                    {{ form.status.errors }}
+                    {{ form.status|add_class:'form-select' }}
+                </div>
                 <div class="col-12">
                     <label for="{{ form.category.id_for_label }}" class="form-label">{{ form.category.label }}</label>
                     {{ form.category.errors }}
@@ -49,8 +54,65 @@
                     <span class="material-icons align-middle">save</span>
                     <span class="align-middle">Salvar</span>
                 </button>
+                <a class="btn btn-secondary" href="{% url 'tickets:list' %}" alt="ver" >
+                    <span class="material-icons md-18 align-middle">arrow_back</span>
+                    <span>voltar</span>
+                </a>
             </div>
         </form>
     </div>
 </div>
+{% endblock %}
+
+{% block js_internal_include %}
+
+$(document).ready(function () {
+    //remove todos os options da subcategoria meno o selecionado
+    //$('#id_subcategory').children('option:not(:selected)').remove();
+    
+    {% if ticket %}
+        var id_category = $("#id_category").val();
+        var id_subcategory_selected = $('#id_subcategory').val();
+        $('#id_subcategory').children().remove();
+        getSubCategories(id_category, id_subcategory_selected);
+    {% endif %}
+
+    
+    $("#id_category").change(function () {
+        var id_category = $(this).val()
+        if(!id_category){
+            return;
+        }
+        $('#id_subcategory').children().remove();
+        getSubCategories(id_category);
+    });
+
+    function getSubCategories(id_category, id_subcategory_selected = ""){
+        $.ajax({
+            url: "{% url 'category:getsubcategory' %}",
+            data: {pk: id_category},
+            type: 'get',
+            success: function(data) {
+                if(data !== 'undefined' && data !== ''){
+                    $("#id_subcategory").append($("<option></option>").attr("value", "").text("---------"));
+                    for(var k in data) {
+                        id = data[k]["id"];
+                        name = data[k]["name"];
+                        if(id == id_subcategory_selected){
+                            var selected = "selected";
+                        }else{
+                            var selected = "";
+                        }
+                        $("#id_subcategory").append("<option value='"+id+"' " +selected+" >"+name+"</option>");
+                    }
+                }
+                    
+            },
+            failure: function(data) { 
+                conole.log('erro no ajax');
+            }
+        });
+    }
+});
+
 {% endblock %}
