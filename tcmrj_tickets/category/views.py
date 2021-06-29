@@ -1,3 +1,6 @@
+from django.contrib.auth.decorators import login_required
+from tcmrj_tickets.core.decorators import group_required
+from django.utils.decorators import method_decorator
 from tcmrj_tickets.category.forms import CategoryForm, SubCategoryForm
 from tcmrj_tickets.category.models import Category, SubCategory
 from django.shortcuts import render, get_object_or_404
@@ -16,6 +19,8 @@ def get_subcategory(request):
     return HttpResponse(json.dumps(result), content_type="application/json")
 
 
+@method_decorator(login_required, name='dispatch')
+@method_decorator(group_required('gestor'), name='dispatch')
 class CategoryCreateView(CreateView):
     template_name = 'category/category_form.html'
     model = Category
@@ -26,34 +31,33 @@ class CategoryCreateView(CreateView):
         form.instance.owner = self.request.user
         return super().form_valid(form)
 
+
+@method_decorator(login_required, name='dispatch')
+@method_decorator(group_required('gestor'), name='dispatch')
 class CategoryUpdateView(UpdateView):
     template_name = 'category/category_form.html'
     model = Category
     form_class = CategoryForm
     success_url = reverse_lazy('category:list')
     
-    def get_object(self):
-        pk = self.kwargs.get("pk")
-        return get_object_or_404(Category, id=pk)    
 
-
+@method_decorator(login_required, name='dispatch')
+@method_decorator(group_required('gestor'), name='dispatch')
 class CategoryListView(ListView):
     template_name = 'category/category_list.html'
     model = Category
     paginate_by = 10
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
 
+@method_decorator(login_required, name='dispatch')
+@method_decorator(group_required('gestor'), name='dispatch')
 class CategoryDatailView(DetailView):
     template_name = 'category/category_detail.html'
     model = Category
     
-    def get_object(self):
-        pk = self.kwargs.get("pk")
-        return get_object_or_404(Category, id=pk)
 
+@method_decorator(login_required, name='dispatch')
+@method_decorator(group_required('gestor'), name='dispatch')
 class CategoryDeleteView(DeleteView):
     template_name = 'category/category_delete.html'
     model = Category
@@ -62,6 +66,8 @@ class CategoryDeleteView(DeleteView):
 
 """SUB CATEORIAS"""
 
+@method_decorator(login_required, name='dispatch')
+@method_decorator(group_required('gestor'), name='dispatch')
 class SubCategoryCreateView(CreateView):
     template_name = 'subcategory/subcategory_form.html'
     model = SubCategory
@@ -72,34 +78,33 @@ class SubCategoryCreateView(CreateView):
         form.instance.owner = self.request.user
         return super().form_valid(form)
 
+
+@method_decorator(login_required, name='dispatch')
+@method_decorator(group_required('gestor'), name='dispatch')
 class SubCategoryUpdateView(UpdateView):
     template_name = 'subcategory/subcategory_form.html'
     model = SubCategory
     form_class = SubCategoryForm
     success_url = reverse_lazy('category:sub_list')
-    
-    def get_object(self):
-        pk = self.kwargs.get("pk")
-        return get_object_or_404(SubCategory, id=pk)    
 
 
+@method_decorator(login_required, name='dispatch')
+@method_decorator(group_required('gestor'), name='dispatch')
 class SubCategoryListView(ListView):
     template_name = 'subcategory/subcategory_list.html'
     model = SubCategory
     paginate_by = 10
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
 
+@method_decorator(login_required, name='dispatch')
+@method_decorator(group_required('gestor'), name='dispatch')
 class SubCategoryDatailView(DetailView):
     template_name = 'subcategory/subcategory_detail.html'
     model = SubCategory
-    
-    def get_object(self):
-        pk = self.kwargs.get("pk")
-        return get_object_or_404(SubCategory, id=pk)
 
+
+@method_decorator(login_required, name='dispatch')
+@method_decorator(group_required('gestor'), name='dispatch')
 class SubCategoryDeleteView(DeleteView):
     template_name = 'subcategory/subcategory_delete.html'
     model = SubCategory

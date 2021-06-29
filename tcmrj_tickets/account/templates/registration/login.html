@@ -1,0 +1,41 @@
+{% extends "base_blank.html" %}
+{% load static %}
+{% block css_file_include %}
+    <link href="{% static 'css/login.css' %}" rel="stylesheet">
+{% endblock %}
+{% block title %}Log-in{% endblock %}
+
+{% block content %}
+<div class="wrapper fadeInDown">
+    <h2>TCMRJ - Chamados</h2>
+    <div id="formContent">
+        <!-- Tabs Titles -->
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <br>
+            <i class="material-icons">person</i>
+        </div>
+
+        <!-- Login Form -->
+        <form action="{% url 'account:login' %}" method="post">
+            {% csrf_token %}
+            <input type="text" id="id_username" class="fadeIn second" name="username" placeholder="username">
+            <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
+            <input type="hidden" name="next" value="{{ next }}" />
+            <input type="submit" class="fadeIn fourth" value="Log In">
+        </form>
+
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+            <a class="underlineHover" href="{% url 'account:password_reset' %}">Forgot Password?</a>
+        </div>
+    </div>
+    {% if form.errors %}
+        <p>
+        Your username and password didn't match.
+        Please try again.
+        </p>        
+    {% endif %}
+</div>
+{% endblock %}

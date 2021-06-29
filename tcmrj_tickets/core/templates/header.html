@@ -3,17 +3,17 @@
         Usuário: <span>{{ user.get_full_name }}</span>
     </div>
     <div class="user-info">
-        Função: <span>{{ Gestor }}</span>
+        Função: <span>{{ user.groups.all.0 }}</span>
     </div>
-    <i class="material-icons">person</i>
-    <!--
-    <ul class="user-info"><i class="material-icons">person</i>
-    <li>
-        Usuário: <span>Marciel Barcellos</span>
-    </li>
-    <li>
-        Função: <span>Gestor</span>
-    </li>
-    </ul>
-    -->
+    <div class="btn-group">
+        <button class="btn btn-dark btn-sm" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="material-icons">person</i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+            <li><a class="dropdown-item active" href="#">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'account:logout' %}">logout</a></li>
+          </ul>
+    </div>
+    
 </div>

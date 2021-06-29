@@ -20,6 +20,7 @@ from tcmrj_tickets.core.views import home
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('tcmrj_tickets.core.urls', namespace='core')),
+    path('account/', include('tcmrj_tickets.account.urls', namespace='account')),
     path('chamados/', include('tcmrj_tickets.tickets.urls', namespace='tickets')),
     path('categoria/', include('tcmrj_tickets.category.urls', namespace='category')),
 ]

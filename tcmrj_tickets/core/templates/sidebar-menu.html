@@ -19,6 +19,9 @@
                 <a href="{% url 'tickets:list' %}">Consulta de Chamado</a>
                 <a href="{% url 'tickets:create' %}">Abertura de Chamado</a>
                 <a href="{% url 'core:gerenciamento' %}">Gerenciamento de Chamado</a>
+                {% if user.groups.all.0 == "gestor" %}
+                    <a href="{% url 'core:gerenciamento' %}">Gerenciamento de Chamado</a>
+                {% endif %}
             </div>
         </div>
         <div class="menu-item">

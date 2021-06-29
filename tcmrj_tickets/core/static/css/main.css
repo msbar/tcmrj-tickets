@@ -46,13 +46,13 @@
 
 :root {
     /*==== colors ====*/
-    --primary-c: #8357E5;
+    --primary-c: #0D6EFD;
     --secondary-c: #2E9C60;
     --tertiary-c: #FF248A;
 
-    --bg-main: #110F14;
+    --bg-main: #212529;
     --bg-secondary: #1c213d;
-    --bg-body-content: rgb(233, 231, 231);
+    --bg-body-content: #fff;
 
     /*==== responsive tipography ====*/
     --body-font: 'Poppins', sans-serif;
