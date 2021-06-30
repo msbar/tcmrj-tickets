@@ -1,8 +1,9 @@
 from django.db import models
 from django.shortcuts import resolve_url as r
-from django.contrib.auth.models import User
 from tcmrj_tickets.core.models import OwnerMixin
 from tcmrj_tickets.category.models import Category, SubCategory
+from simple_history.models import HistoricalRecords
+
 
 class Solver(OwnerMixin):
     name = models.CharField('Responsável', max_length=255)
@@ -31,6 +32,7 @@ class Ticket(OwnerMixin):
     subcategory = models.ForeignKey(SubCategory, on_delete=models.DO_NOTHING, related_name='tickets_subcategory', verbose_name='Sub Categoria', blank=True, null=True)
     solver = models.ForeignKey(Solver, on_delete=models.DO_NOTHING, verbose_name='Responsável')
     description = models.TextField(verbose_name='Descrição')
+    history = HistoricalRecords()
     
 
     class Meta:

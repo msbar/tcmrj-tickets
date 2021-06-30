@@ -250,3 +250,18 @@ aside.closed ~ main {
 main .container{
     overflow: auto;
 }
+
+main .history_container{
+    background-color: #f8f9fa;
+    font-size: small;
+    padding: 10px;
+    text-align: center;
+    align-items: center;
+    font-family: monospace;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+main .history_container p {
+    margin-top: 0;
+    margin-bottom: 0;
+}

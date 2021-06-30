@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'tcmrj_tickets.core.apps.CoreConfig',
     'tcmrj_tickets.category.apps.CategoryConfig',
     'tcmrj_tickets.tickets.apps.TicketsConfig',
+    'simple_history',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'simple_history.middleware.HistoryRequestMiddleware',
 ]
 
 ROOT_URLCONF = 'tcmrj_tickets.urls'
