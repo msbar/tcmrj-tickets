@@ -34,7 +34,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='', cast=Csv())
 # Application definition
 
 INSTALLED_APPS = [
-    'tcmrj_tickets.account.apps.AccountConfig',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,10 +44,14 @@ INSTALLED_APPS = [
     'test_without_migrations',
     'django_extensions',
     'widget_tweaks',
+    'simple_history',
+    'rest_framework',
+    'tcmrj_tickets.account.apps.AccountConfig',
     'tcmrj_tickets.core.apps.CoreConfig',
     'tcmrj_tickets.category.apps.CategoryConfig',
     'tcmrj_tickets.tickets.apps.TicketsConfig',
-    'simple_history',
+    'tcmrj_tickets.api.apps.ApiConfig',
+    
 ]
 
 MIDDLEWARE = [
@@ -136,3 +140,15 @@ LOGIN_REDIRECT_URL = '/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#django restframework
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated'
+    ],
+    
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}

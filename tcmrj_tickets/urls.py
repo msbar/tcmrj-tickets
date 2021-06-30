@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from tcmrj_tickets.core.views import home
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('tcmrj_tickets.core.urls', namespace='core')),
+    path('api/', include('tcmrj_tickets.api.urls', namespace='rest_framework')),
     path('account/', include('tcmrj_tickets.account.urls', namespace='account')),
     path('chamados/', include('tcmrj_tickets.tickets.urls', namespace='tickets')),
     path('categoria/', include('tcmrj_tickets.category.urls', namespace='category')),
