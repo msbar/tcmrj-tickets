@@ -1,13 +1,14 @@
+from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.decorators import login_required
 from tcmrj_tickets.core.decorators import group_required
 from django.utils.decorators import method_decorator
 from tcmrj_tickets.category.forms import CategoryForm, SubCategoryForm
 from tcmrj_tickets.category.models import Category, SubCategory
-from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.http import HttpResponse
 import json
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from tcmrj_tickets.core.mixins import MessageSuccessDeleteView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
@@ -21,11 +22,12 @@ def get_subcategory(request):
 
 decorators = [login_required, group_required('gestor')]
 @method_decorator(decorators, name='dispatch')
-class CategoryCreateView(CreateView):
+class CategoryCreateView(SuccessMessageMixin, CreateView):
     template_name = 'category/category_form.html'
     model = Category
     form_class = CategoryForm
     success_url = reverse_lazy('category:list')
+    success_message = "Categoria criada com sucesso!"
 
     def form_valid(self, form):
         form.instance.owner = self.request.user
@@ -34,11 +36,12 @@ class CategoryCreateView(CreateView):
 
 decorators = [login_required, group_required('gestor')]
 @method_decorator(decorators, name='dispatch')
-class CategoryUpdateView(UpdateView):
+class CategoryUpdateView(SuccessMessageMixin, UpdateView):
     template_name = 'category/category_form.html'
     model = Category
     form_class = CategoryForm
     success_url = reverse_lazy('category:list')
+    success_message = "Categoria atualizada com sucesso!"
     
 
 decorators = [login_required, group_required('gestor')]
@@ -58,21 +61,23 @@ class CategoryDatailView(DetailView):
 
 decorators = [login_required, group_required('gestor')]
 @method_decorator(decorators, name='dispatch')
-class CategoryDeleteView(DeleteView):
+class CategoryDeleteView(MessageSuccessDeleteView):
     template_name = 'category/category_delete.html'
     model = Category
     success_url = reverse_lazy('category:list')
+    success_message = "Categoria deletada com sucesso!"
 
 
 """SUB CATEORIAS"""
 
 decorators = [login_required, group_required('gestor')]
 @method_decorator(decorators, name='dispatch')
-class SubCategoryCreateView(CreateView):
+class SubCategoryCreateView(SuccessMessageMixin, CreateView):
     template_name = 'subcategory/subcategory_form.html'
     model = SubCategory
     form_class = SubCategoryForm
     success_url = reverse_lazy('category:sub_list')
+    success_message = "Subcategoria criada com sucesso!"
 
     def form_valid(self, form):
         form.instance.owner = self.request.user
@@ -81,11 +86,12 @@ class SubCategoryCreateView(CreateView):
 
 decorators = [login_required, group_required('gestor')]
 @method_decorator(decorators, name='dispatch')
-class SubCategoryUpdateView(UpdateView):
+class SubCategoryUpdateView(SuccessMessageMixin, UpdateView):
     template_name = 'subcategory/subcategory_form.html'
     model = SubCategory
     form_class = SubCategoryForm
     success_url = reverse_lazy('category:sub_list')
+    success_message = "Subcategoria atualizada com sucesso!"
 
 
 decorators = [login_required, group_required('gestor')]
@@ -105,9 +111,10 @@ class SubCategoryDatailView(DetailView):
 
 @method_decorator(login_required, name='dispatch')
 @method_decorator(group_required('gestor'), name='dispatch')
-class SubCategoryDeleteView(DeleteView):
+class SubCategoryDeleteView(MessageSuccessDeleteView):
     template_name = 'subcategory/subcategory_delete.html'
     model = SubCategory
     success_url = reverse_lazy('category:sub_list')
+    success_message = "Subcategoria excluída com sucesso!"
 
 

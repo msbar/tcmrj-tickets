@@ -36,6 +36,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='', cast=Csv())
 INSTALLED_APPS = [
     
     'django.contrib.admin',
+    'tcmrj_tickets.account.apps.AccountConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -46,7 +47,6 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'simple_history',
     'rest_framework',
-    'tcmrj_tickets.account.apps.AccountConfig',
     'tcmrj_tickets.core.apps.CoreConfig',
     'tcmrj_tickets.category.apps.CategoryConfig',
     'tcmrj_tickets.tickets.apps.TicketsConfig',

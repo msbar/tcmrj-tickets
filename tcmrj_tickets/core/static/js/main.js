@@ -7,4 +7,6 @@ $(document).ready(function () {
         $(this).toggleClass("opened");
         $("#sidebar").removeClass('closed'); 
     });
+
+    $('.toast').toast('show');
 });

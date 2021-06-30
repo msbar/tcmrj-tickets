@@ -28,7 +28,7 @@
                 <span class="material-icons md-18 align-middle">arrow_back</span>
                 <span>voltar</span>
             </a>
-            {% if request.user|has_groups:"gestor, suporte" %}
+            {% if request.user|has_groups:"gestor,suporte" %}
             <a class="btn btn-success" href="{% url 'tickets:update' ticket.id %}">
                 <span class="material-icons md-18 align-middle">edit</span>
                 <span>editar</span>

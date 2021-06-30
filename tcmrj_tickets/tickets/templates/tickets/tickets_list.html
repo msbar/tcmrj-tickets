@@ -6,8 +6,9 @@
 {% block content %}
 <div class="container">
     <div class="row col-12">
-        <h2>Lista de Chamados</h2>
+        <h4>Lista de Chamados</h4>
     </div>
+    <br><br>
     <div class="row col-12">
         <table class="table table-light table-striped">
             <thead>
@@ -33,7 +34,7 @@
                             <span class="material-icons md-18 align-middle">visibility</span>
                             <span>ver</span>
                         </a>
-                        {% if request.user|has_groups:"gestor, suporte" %}
+                        {% if request.user|has_groups:"gestor,suporte" %}
                         <a class="btn btn-success" href="{% url 'tickets:update' ticket.id %}">
                             <span class="material-icons md-18 align-middle">edit</span>
                             <span>editar</span>
@@ -59,10 +60,12 @@
         <span class="material-icons md-18 align-middle">add</span>
         <span>Adicionar Chamado</span>
     </a>
+    {% if request.user|has_groups:"gestor" %}
     <a class="btn btn-secondary" href="{% url 'core:gerenciamento' %}" alt="ver" >
         <span class="material-icons md-18 align-middle">arrow_back</span>
         <span>voltar - Gerenciamento</span>
     </a>
+    {% endif %}
 </div>
 {% endblock %}
 

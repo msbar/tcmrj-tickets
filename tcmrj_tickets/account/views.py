@@ -7,4 +7,4 @@ def user_login(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('account:login')
+    return redirect('accounts:login')
