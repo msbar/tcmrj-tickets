@@ -12,6 +12,12 @@ class SolverForm(forms.ModelForm):
 class TicketForm(forms.ModelForm):
     class Meta:
         model = Ticket
+        fields = ['category', 'subcategory', 'solver', 'description']
+
+
+class TicketManagerForm(forms.ModelForm):
+    class Meta:
+        model = Ticket
         fields = ['status', 'category', 'subcategory', 'solver', 'description']
     
 

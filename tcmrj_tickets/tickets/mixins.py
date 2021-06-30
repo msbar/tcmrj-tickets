@@ -1,4 +1,4 @@
-from tcmrj_tickets.tickets.forms import TicketForm, TicketBasicForm
+from tcmrj_tickets.tickets.forms import TicketForm, TicketManagerForm, TicketBasicForm
 from tcmrj_tickets.tickets.models import Ticket
 
 # define o ticket owner com request user
@@ -10,8 +10,8 @@ class OwnerTicketCreateMixin(object):
 # decide qual formulário será apresentado para o gestor e para o suporte
 class TicketUpdateMixin(object):
     def get_form_class(self):
-        if self.request.user.groups in ['gestor']:
-            return TicketForm
+        if self.request.user.groups.filter(name__in=['gestor']).exists():
+            return TicketManagerForm
         return TicketBasicForm
 
 # Retorna lista de ticket completa para gestor e suporte e apenas os próprios tickets para o padrao

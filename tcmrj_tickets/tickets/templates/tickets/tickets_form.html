@@ -71,48 +71,50 @@ $(document).ready(function () {
     //remove todos os options da subcategoria meno o selecionado
     //$('#id_subcategory').children('option:not(:selected)').remove();
     
-    {% if ticket %}
-        var id_category = $("#id_category").val();
-        var id_subcategory_selected = $('#id_subcategory').val();
-        $('#id_subcategory').children().remove();
-        getSubCategories(id_category, id_subcategory_selected);
-    {% endif %}
+    if( $('#id_category').length )  {
+        {% if ticket %}
+            var id_category = $("#id_category").val();
+            var id_subcategory_selected = $('#id_subcategory').val();
+            $('#id_subcategory').children().remove();
+            getSubCategories(id_category, id_subcategory_selected);
+        {% endif %}
 
-    
-    $("#id_category").change(function () {
-        var id_category = $(this).val()
-        if(!id_category){
-            return;
-        }
-        $('#id_subcategory').children().remove();
-        getSubCategories(id_category);
-    });
-
-    function getSubCategories(id_category, id_subcategory_selected = ""){
-        $.ajax({
-            url: "{% url 'category:getsubcategory' %}",
-            data: {pk: id_category},
-            type: 'get',
-            success: function(data) {
-                if(data !== 'undefined' && data !== ''){
-                    $("#id_subcategory").append($("<option></option>").attr("value", "").text("---------"));
-                    for(var k in data) {
-                        id = data[k]["id"];
-                        name = data[k]["name"];
-                        if(id == id_subcategory_selected){
-                            var selected = "selected";
-                        }else{
-                            var selected = "";
-                        }
-                        $("#id_subcategory").append("<option value='"+id+"' " +selected+" >"+name+"</option>");
-                    }
-                }
-                    
-            },
-            failure: function(data) { 
-                conole.log('erro no ajax');
+        
+        $("#id_category").change(function () {
+            var id_category = $(this).val()
+            if(!id_category){
+                return;
             }
+            $('#id_subcategory').children().remove();
+            getSubCategories(id_category);
         });
+
+        function getSubCategories(id_category, id_subcategory_selected = ""){
+            $.ajax({
+                url: "{% url 'category:getsubcategory' %}",
+                data: {pk: id_category},
+                type: 'get',
+                success: function(data) {
+                    if(data !== 'undefined' && data !== ''){
+                        $("#id_subcategory").append($("<option></option>").attr("value", "").text("---------"));
+                        for(var k in data) {
+                            id = data[k]["id"];
+                            name = data[k]["name"];
+                            if(id == id_subcategory_selected){
+                                var selected = "selected";
+                            }else{
+                                var selected = "";
+                            }
+                            $("#id_subcategory").append("<option value='"+id+"' " +selected+" >"+name+"</option>");
+                        }
+                    }
+                        
+                },
+                failure: function(data) { 
+                    conole.log('erro no ajax');
+                }
+            });
+        }
     }
 });
 
