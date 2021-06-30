@@ -18,6 +18,7 @@ class Solver(OwnerMixin):
     def get_absolute_url(self):
         return r('tickets:list')
 
+
 class Ticket(OwnerMixin):
     STATUS_CHOICES = [
         ('Aberto', 'Aberto'),

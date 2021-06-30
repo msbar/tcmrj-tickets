@@ -1,4 +1,5 @@
 {% load static %}
+{% load core_extras %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -34,7 +35,7 @@
         {% include 'header.html' %}
     </header>
     <aside id="sidebar">
-        {% include 'sidebar-menu.html' only %}
+        {% include 'sidebar-menu.html' %}
     </aside>
     <main>
         {% if messages %}

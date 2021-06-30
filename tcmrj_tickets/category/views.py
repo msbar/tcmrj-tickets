@@ -19,8 +19,8 @@ def get_subcategory(request):
     return HttpResponse(json.dumps(result), content_type="application/json")
 
 
-@method_decorator(login_required, name='dispatch')
-@method_decorator(group_required('gestor'), name='dispatch')
+decorators = [login_required, group_required('gestor')]
+@method_decorator(decorators, name='dispatch')
 class CategoryCreateView(CreateView):
     template_name = 'category/category_form.html'
     model = Category
@@ -32,8 +32,8 @@ class CategoryCreateView(CreateView):
         return super().form_valid(form)
 
 
-@method_decorator(login_required, name='dispatch')
-@method_decorator(group_required('gestor'), name='dispatch')
+decorators = [login_required, group_required('gestor')]
+@method_decorator(decorators, name='dispatch')
 class CategoryUpdateView(UpdateView):
     template_name = 'category/category_form.html'
     model = Category
@@ -41,23 +41,23 @@ class CategoryUpdateView(UpdateView):
     success_url = reverse_lazy('category:list')
     
 
-@method_decorator(login_required, name='dispatch')
-@method_decorator(group_required('gestor'), name='dispatch')
+decorators = [login_required, group_required('gestor')]
+@method_decorator(decorators, name='dispatch')
 class CategoryListView(ListView):
     template_name = 'category/category_list.html'
     model = Category
     paginate_by = 10
 
 
-@method_decorator(login_required, name='dispatch')
-@method_decorator(group_required('gestor'), name='dispatch')
+decorators = [login_required, group_required('gestor')]
+@method_decorator(decorators, name='dispatch')
 class CategoryDatailView(DetailView):
     template_name = 'category/category_detail.html'
     model = Category
     
 
-@method_decorator(login_required, name='dispatch')
-@method_decorator(group_required('gestor'), name='dispatch')
+decorators = [login_required, group_required('gestor')]
+@method_decorator(decorators, name='dispatch')
 class CategoryDeleteView(DeleteView):
     template_name = 'category/category_delete.html'
     model = Category
@@ -66,8 +66,8 @@ class CategoryDeleteView(DeleteView):
 
 """SUB CATEORIAS"""
 
-@method_decorator(login_required, name='dispatch')
-@method_decorator(group_required('gestor'), name='dispatch')
+decorators = [login_required, group_required('gestor')]
+@method_decorator(decorators, name='dispatch')
 class SubCategoryCreateView(CreateView):
     template_name = 'subcategory/subcategory_form.html'
     model = SubCategory
@@ -79,8 +79,8 @@ class SubCategoryCreateView(CreateView):
         return super().form_valid(form)
 
 
-@method_decorator(login_required, name='dispatch')
-@method_decorator(group_required('gestor'), name='dispatch')
+decorators = [login_required, group_required('gestor')]
+@method_decorator(decorators, name='dispatch')
 class SubCategoryUpdateView(UpdateView):
     template_name = 'subcategory/subcategory_form.html'
     model = SubCategory
@@ -88,8 +88,8 @@ class SubCategoryUpdateView(UpdateView):
     success_url = reverse_lazy('category:sub_list')
 
 
-@method_decorator(login_required, name='dispatch')
-@method_decorator(group_required('gestor'), name='dispatch')
+decorators = [login_required, group_required('gestor')]
+@method_decorator(decorators, name='dispatch')
 class SubCategoryListView(ListView):
     template_name = 'subcategory/subcategory_list.html'
     model = SubCategory

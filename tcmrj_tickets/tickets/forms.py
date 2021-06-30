@@ -13,3 +13,9 @@ class TicketForm(forms.ModelForm):
     class Meta:
         model = Ticket
         fields = ['status', 'category', 'subcategory', 'solver', 'description']
+    
+
+class TicketBasicForm(forms.ModelForm):
+    class Meta:
+        model = Ticket
+        fields = ['solver']

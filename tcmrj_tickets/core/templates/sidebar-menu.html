@@ -1,3 +1,4 @@
+{% load core_extras %}
 <div class="logo-datails">
     <span class="material-icons" id="btn-menu">menu</span>
     <h3>TCMRJ - TICKETS</h3>
@@ -18,17 +19,18 @@
             <div class="submenu-item">
                 <a href="{% url 'tickets:list' %}">Consulta de Chamado</a>
                 <a href="{% url 'tickets:create' %}">Abertura de Chamado</a>
-                <a href="{% url 'core:gerenciamento' %}">Gerenciamento de Chamado</a>
-                {% if user.groups.all.0 == "gestor" %}
+                {% if request.user|has_groups:"gestor" %}
                     <a href="{% url 'core:gerenciamento' %}">Gerenciamento de Chamado</a>
                 {% endif %}
             </div>
         </div>
+        {% if request.user|has_groups:"gestor" %}
         <div class="menu-item">
             <a href="#" class="menu-item-link">
                 <i class="material-icons">people</i>
                 <span>Usuários</span>
             </a>
         </div>
+        {% endif %}
         
 </div>

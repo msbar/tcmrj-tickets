@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load core_extras %}
 
 {% block title %}Lista de Chamados{% endblock %}
 
@@ -27,14 +28,18 @@
                     <span class="material-icons md-18 align-middle">arrow_back</span>
                     <span>voltar</span>
                 </a>
+                {% if request.user|has_groups:"gestor, suporte" %}
                 <a class="btn btn-success" href="{% url 'tickets:update' ticket.id %}">
                     <span class="material-icons md-18 align-middle">edit</span>
                     <span>editar</span>
                 </a>
+                {% endif %}
+                {% if request.user|has_groups:"gestor" %}
                 <a class="btn btn-danger" href="{% url 'tickets:delete' ticket.id %}">
                     <span class="material-icons md-18 align-middle">delete</span>
                     <span>deletar</span>
                 </a>
+                {% endif %}
             </div>
         </div>
 </div>
