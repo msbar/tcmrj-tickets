@@ -17,6 +17,7 @@
                     <th scope="col">Abertura</th>
                     <th scope="col">Status</th>
                     <th scope="col">Categoria</th>
+                    <th scope="col">Subcategoria</th>
                     <th scope="col">Responsável</th>
                     <th scope="col">Ações</th>
                 </tr>
@@ -28,6 +29,7 @@
                     <td>{{ ticket.created_at }}</td>
                     <td>{{ ticket.status }}</td>
                     <td>{{ ticket.category }}</td>
+                    <td>{{ ticket.subcategory|default:"" }}</td>
                     <td>{{ ticket.solver }}</td>
                     <td class="td_actions">
                         <a class="btn btn-primary" href="{% url 'tickets:detail' ticket.id %}" alt="ver" >

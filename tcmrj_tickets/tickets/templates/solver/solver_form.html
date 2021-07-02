@@ -2,10 +2,10 @@
 {% load widget_tweaks %}
 
 {% block title %}
-    {% if ticket %}
-        Autaliza Categoria: "{{ category.id }}"
+    {% if solver %}
+        Autaliza Responsável: "{{ solver.id }}"
     {% else %}
-        Nova Categoria
+        Novo Responsável
     {% endif %}
 {% endblock %}
 
@@ -17,9 +17,9 @@
             <fieldset class="fieldset-forms row col-6">
                 <legend class="">
                     {% if category %}
-                        Atualiza Categoria: "{{ category.id }}"
+                        Atualiza Responsável: "{{ solver.id }}"
                     {% else %}
-                        Nova Categoria
+                        Nova Responsável
                     {% endif %}
                 </legend>
                 <div class="col-12">

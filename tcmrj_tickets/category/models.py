@@ -16,7 +16,7 @@ class Category(OwnerMixin):
         return self.name
 
     def get_absolute_url(self):
-        return r('category:list')
+        return r('category:detail', pk=self.id)
 
 
 
@@ -33,4 +33,4 @@ class SubCategory(OwnerMixin):
         return self.name
 
     def get_absolute_url(self):
-        return r('category:sub_list')
+        return r('category:sub_detail', pk=self.id)

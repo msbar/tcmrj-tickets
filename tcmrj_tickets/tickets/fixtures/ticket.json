@@ -1,0 +1,86 @@
+[
+{
+    "model": "tickets.ticket",
+    "pk": 1,
+    "fields": {
+        "owner": 1,
+        "created_at": "2021-06-28T20:07:29.756Z",
+        "updated_at": "2021-06-30T21:08:37.821Z",
+        "status": "Aberto",
+        "category": 1,
+        "subcategory": 1,
+        "solver": 1,
+        "description": "Ar-Condicionado com defeito."
+    }
+},
+{
+    "model": "tickets.ticket",
+    "pk": 2,
+    "fields": {
+        "owner": 2,
+        "created_at": "2021-06-28T20:18:50.657Z",
+        "updated_at": "2021-06-30T21:02:16.602Z",
+        "status": "Aberto",
+        "category": 2,
+        "subcategory": null,
+        "solver": 2,
+        "description": "Lâmpada Queimada."
+    }
+},
+{
+    "model": "tickets.ticket",
+    "pk": 3,
+    "fields": {
+        "owner": 3,
+        "created_at": "2021-06-30T01:19:31.414Z",
+        "updated_at": "2021-06-30T21:08:33.997Z",
+        "status": "Aberto",
+        "category": 1,
+        "subcategory": 2,
+        "solver": 3,
+        "description": "ar condicionado com defeito"
+    }
+},
+{
+    "model": "tickets.ticket",
+    "pk": 4,
+    "fields": {
+        "owner": 2,
+        "created_at": "2021-06-30T10:49:12.741Z",
+        "updated_at": "2021-06-30T21:03:00.408Z",
+        "status": "Aberto",
+        "category": 2,
+        "subcategory": null,
+        "solver": 1,
+        "description": "Lâmpada Queimada"
+    }
+},
+{
+    "model": "tickets.ticket",
+    "pk": 5,
+    "fields": {
+        "owner": 3,
+        "created_at": "2021-06-30T11:07:35.441Z",
+        "updated_at": "2021-06-30T20:17:40.868Z",
+        "status": "Aberto",
+        "category": 5,
+        "subcategory": 3,
+        "solver": 2,
+        "description": "Tomada com Problemas"
+    }
+},
+{
+    "model": "tickets.ticket",
+    "pk": 7,
+    "fields": {
+        "owner": 1,
+        "created_at": "2021-06-30T12:59:26.368Z",
+        "updated_at": "2021-06-30T13:51:50.823Z",
+        "status": "Aberto",
+        "category": 4,
+        "subcategory": null,
+        "solver": 2,
+        "description": "Pé da cadeira quebrado"
+    }
+}
+]

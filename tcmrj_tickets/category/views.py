@@ -13,10 +13,10 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
 
+@login_required
 def get_subcategory(request):
     pk = request.GET.get('pk')
-    result = list(SubCategory.objects.filter(
-        category_id=int(pk)).values('id', 'name'))
+    result = list(SubCategory.objects.filter(category_id=pk).values('id', 'name'))
     return HttpResponse(json.dumps(result), content_type="application/json")
 
 

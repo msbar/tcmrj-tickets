@@ -17,14 +17,18 @@ class Solver(OwnerMixin):
         return self.name
 
     def get_absolute_url(self):
-        return r('tickets:list')
+        return r('tickets:solver_detail', pk=self.id)
 
 
 class Ticket(OwnerMixin):
+    ABERTO = 'Aberto'
+    EMANDAMENTO = 'Em Andamento'
+    CONCLUIDO = 'Concluído'
+
     STATUS_CHOICES = [
-        ('Aberto', 'Aberto'),
-        ('Em Andamento', 'Em Andamento'),
-        ('Concluído', 'Concluído'),
+        (ABERTO, 'Aberto'),
+        (EMANDAMENTO, 'Em Andamento'),
+        (CONCLUIDO, 'Concluído'),
     ]
 
     status = models.CharField(max_length=12, choices=STATUS_CHOICES, default='Aberto', verbose_name='Status')
@@ -44,4 +48,4 @@ class Ticket(OwnerMixin):
         return str(self.id)
 
     def get_absolute_url(self):
-        return r('tickets:list')
+        return r('tickets:detail', pk=self.id)
