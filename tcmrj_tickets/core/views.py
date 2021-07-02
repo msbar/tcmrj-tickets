@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from tcmrj_tickets.core.decorators import group_required
 from django.contrib.auth.decorators import login_required
+from tcmrj_tickets.tickets.models import Ticket
+from django.db.models import Count
 
 @login_required
 def home(request):

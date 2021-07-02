@@ -268,3 +268,14 @@ main .history_container p {
     background:#dc3545;
     color: #fff;
 }
+
+
+@media only screen and (max-width: 1300px){  
+    main .container{
+        font-size: .9rem;
+    }
+
+    .td_actions a {
+        font-size: .9rem;
+    }
+}
