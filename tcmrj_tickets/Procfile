@@ -1,1 +1,1 @@
-web: gunicorn tcmrj_tickets.wsgi --log-file -
+web: gunicorn tcmrj-tickets.wsgi --log-file -
