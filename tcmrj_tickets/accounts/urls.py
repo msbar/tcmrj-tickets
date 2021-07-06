@@ -1,9 +1,9 @@
 from django.urls import path, include
-from django.contrib.auth import views as auth_views
-# from .views import user_login, logout_view
+from tcmrj_tickets.accounts.views import AccountsCreateView
 
 app_name = 'accounts'
 urlpatterns = [
+    path('create/', AccountsCreateView.as_view(), name='create'),
     path('', include('django.contrib.auth.urls')),
     
 ]

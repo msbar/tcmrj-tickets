@@ -264,6 +264,19 @@ main .history_container p {
     margin-bottom: 0;
 }
 
+.fieldWrapper{
+    padding-bottom: 5px;
+}
+.helptext {
+    font-size: xx-small;
+    color: var(--secondary-c);
+}
+
+.errorlist {
+    font-size: xx-small;
+    color: #dc3545;
+}
+
 /* messages */
 .bg-error {
     background:#dc3545;
