@@ -18,7 +18,7 @@ from django.urls import path, include
 
 
 urlpatterns = [
-    path('accounts/', include('tcmrj_tickets.account.urls', namespace='accounts')),
+    path('accounts/', include('tcmrj_tickets.accounts.urls', namespace='accounts')),
     path('admin/', admin.site.urls),
     path('', include('tcmrj_tickets.core.urls', namespace='core')),   
     path('api/', include('tcmrj_tickets.api.urls', namespace='rest_framework')),

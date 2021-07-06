@@ -240,6 +240,7 @@ main {
     width: calc(100vw - 255px);
     height: calc(100vh - 65px);
     transition: left .5s;
+    overflow-y: auto;
 }
 /*menu fechado main content*/
 aside.closed ~ main {
