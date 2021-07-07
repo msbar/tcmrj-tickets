@@ -3,7 +3,7 @@
     "model": "category.category",
     "pk": 1,
     "fields": {
-        "owner": 1,
+        "created_by": 1,
         "created_at": "2021-06-28T18:24:29.735Z",
         "updated_at": "2021-06-30T23:29:18.589Z",
         "name": "Ar-Condicionado"
@@ -13,7 +13,7 @@
     "model": "category.category",
     "pk": 2,
     "fields": {
-        "owner": 1,
+        "created_by": 1,
         "created_at": "2021-06-28T18:42:48.281Z",
         "updated_at": "2021-06-28T18:42:48.281Z",
         "name": "Iluminação"
@@ -23,7 +23,7 @@
     "model": "category.category",
     "pk": 3,
     "fields": {
-        "owner": 1,
+        "created_by": 1,
         "created_at": "2021-06-28T18:43:01.648Z",
         "updated_at": "2021-06-28T18:43:01.648Z",
         "name": "Pintura"
@@ -33,7 +33,7 @@
     "model": "category.category",
     "pk": 4,
     "fields": {
-        "owner": 1,
+        "created_by": 1,
         "created_at": "2021-06-28T18:43:10.036Z",
         "updated_at": "2021-06-28T18:43:10.036Z",
         "name": "Móveis"
@@ -43,7 +43,7 @@
     "model": "category.category",
     "pk": 5,
     "fields": {
-        "owner": 1,
+        "created_by": 1,
         "created_at": "2021-06-28T18:45:11.002Z",
         "updated_at": "2021-06-28T18:45:11.002Z",
         "name": "Reparos"

@@ -4,16 +4,16 @@ from tcmrj_tickets.core.decorators import group_required
 from django.utils.decorators import method_decorator
 from tcmrj_tickets.tickets.forms import TicketForm, SolverForm
 from tcmrj_tickets.tickets.models import Ticket, Solver
-from tcmrj_tickets.tickets.mixins import OwnerTicketCreateMixin, TicketUpdateMixin, TicketListMixin
+from tcmrj_tickets.tickets.mixins import TicketUpdateMixin, TicketListMixin
 from django.urls import reverse_lazy
-from tcmrj_tickets.core.mixins import MessageSuccessDeleteView
+from tcmrj_tickets.core.mixins import ViewCreatedByMixin, MessageSuccessDeleteView
 from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
 
 @method_decorator(login_required, name='dispatch')
-class TicketCreateView(SuccessMessageMixin, OwnerTicketCreateMixin, CreateView):
+class TicketCreateView(SuccessMessageMixin, ViewCreatedByMixin, CreateView):
     template_name = 'tickets/tickets_form.html'
     model = Ticket
     form_class = TicketForm
@@ -54,16 +54,13 @@ class TicketDeleteView(MessageSuccessDeleteView):
 
 decorators = [login_required, group_required('gestor')]
 @method_decorator(decorators, name='dispatch')
-class SolverCreateView(SuccessMessageMixin, CreateView):
+class SolverCreateView(ViewCreatedByMixin, SuccessMessageMixin, CreateView):
     template_name = 'solver/solver_form.html'
     model = Solver
     form_class = SolverForm
     success_url = reverse_lazy('tickets:solver_list')
     success_message = "Responsável criado com sucesso!"
 
-    def form_valid(self, form):
-        form.instance.owner = self.request.user
-        return super().form_valid(form)
 
 
 decorators = [login_required, group_required('gestor')]

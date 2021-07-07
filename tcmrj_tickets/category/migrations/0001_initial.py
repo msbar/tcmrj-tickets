@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Criado em')),
                 ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Atualizado em')),
                 ('name', models.CharField(max_length=150, verbose_name='Nome da Categoria')),
-                ('owner', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to=settings.AUTH_USER_MODEL, verbose_name='Criado por')),
+                ('created_by', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to=settings.AUTH_USER_MODEL, verbose_name='Criado por')),
             ],
             options={
                 'verbose_name': 'Categoria',
@@ -37,7 +37,7 @@ class Migration(migrations.Migration):
                 ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Atualizado em')),
                 ('name', models.CharField(max_length=150, verbose_name='Nome da Sub Categoria')),
                 ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='subcategory_parent', to='category.category')),
-                ('owner', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to=settings.AUTH_USER_MODEL, verbose_name='Criado por')),
+                ('created_by', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to=settings.AUTH_USER_MODEL, verbose_name='Criado por')),
             ],
             options={
                 'verbose_name': 'Sub Categoria',

@@ -14,7 +14,7 @@ class SubCategoryModelTest(TestCase):
         self.subcategory = SubCategory.objects.create(
             category = self.category,
             name = 'Split',
-            owner = self.user
+            created_by = self.user
         )
 
     def test_create(self):

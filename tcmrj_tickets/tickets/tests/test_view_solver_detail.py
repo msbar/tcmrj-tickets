@@ -58,8 +58,8 @@ class solverDetailTest(TestCase):
         self.assertContains(self.response, expected)
 
 
-    def test_p_tag_display_solver_owner(self):
-        expected = '<p><b>Criador: </b>{}</p>'.format(self.solver.owner)
+    def test_p_tag_display_solver_created_by(self):
+        expected = '<p><b>Criador: </b>{}</p>'.format(self.solver.created_by)
         self.assertContains(self.response, expected)
 
 

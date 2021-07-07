@@ -1,11 +1,11 @@
 from django.db import models
 from django.shortcuts import resolve_url as r
-from tcmrj_tickets.core.models import OwnerMixin
+from tcmrj_tickets.core.models import ModelCreatedByMixin
 from tcmrj_tickets.category.models import Category, SubCategory
 from simple_history.models import HistoricalRecords
 
 
-class Solver(OwnerMixin):
+class Solver(ModelCreatedByMixin):
     name = models.CharField('Responsável', max_length=255)
 
     class Meta:
@@ -20,7 +20,7 @@ class Solver(OwnerMixin):
         return r('tickets:solver_detail', pk=self.id)
 
 
-class Ticket(OwnerMixin):
+class Ticket(ModelCreatedByMixin):
     ABERTO = 'Aberto'
     EMANDAMENTO = 'Em Andamento'
     CONCLUIDO = 'Concluído'

@@ -61,8 +61,8 @@ class SubCategoryDetailTest(TestCase):
         expected = '<p><b>Sub Categoria: </b>{}</p>'.format(self.subcategory.name)
         self.assertContains(self.response, expected)
 
-    def test_p_tag_display_subsubcategory_owner(self):
-        expected = '<p><b>Criador: </b>{}</p>'.format(self.subcategory.owner)
+    def test_p_tag_display_subsubcategory_created_by(self):
+        expected = '<p><b>Criador: </b>{}</p>'.format(self.subcategory.created_by)
         self.assertContains(self.response, expected)
 
     def test_p_tag_display_subcategory_created_at(self):

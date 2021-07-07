@@ -58,8 +58,8 @@ class CategoryDetailTest(TestCase):
         self.assertContains(self.response, expected)
 
 
-    def test_p_tag_display_category_owner(self):
-        expected = '<p><b>Criador: </b>{}</p>'.format(self.category.owner)
+    def test_p_tag_display_category_created_by(self):
+        expected = '<p><b>Criador: </b>{}</p>'.format(self.category.created_by)
         self.assertContains(self.response, expected)
 
 
