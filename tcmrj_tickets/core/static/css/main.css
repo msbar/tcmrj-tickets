@@ -240,6 +240,7 @@ main {
     width: calc(100vw - 255px);
     height: calc(100vh - 65px);
     transition: left .5s;
+    overflow-y: auto;
 }
 /*menu fechado main content*/
 aside.closed ~ main {
@@ -261,6 +262,19 @@ main .history_container{
 main .history_container p {
     margin-top: 0;
     margin-bottom: 0;
+}
+
+.fieldWrapper{
+    padding-bottom: 5px;
+}
+.helptext {
+    font-size: xx-small;
+    color: var(--secondary-c);
+}
+
+.errorlist {
+    font-size: xx-small;
+    color: #dc3545;
 }
 
 /* messages */

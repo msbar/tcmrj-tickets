@@ -20,7 +20,7 @@ class TicketModelTest(TestCase):
             subcategory = self.subcategory,
             solver = self.solver,
             description = 'Ar-Condicionado com Problemas',
-            owner = self.user
+            created_by = self.user
         )
 
     def test_create(self):

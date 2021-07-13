@@ -18,7 +18,7 @@
         </div>
 
         <!-- Login Form -->
-        <form action="{% url 'account:login' %}" method="post">
+        <form action="{% url 'accounts:login' %}" method="post">
             {% csrf_token %}
             <input type="text" id="id_username" class="fadeIn second" name="username" placeholder="username">
             <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
@@ -28,7 +28,7 @@
 
         <!-- Remind Passowrd -->
         <div id="formFooter">
-            <a class="underlineHover" href="{% url 'account:password_reset' %}">Esqueceu a senha?</a>
+            <a class="underlineHover" href="{% url 'accounts:password_reset' %}">Esqueceu a senha?</a>
         </div>
     </div>
     {% if form.errors %}

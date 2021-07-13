@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+
+{% block title %}
+    {% if accounts %}
+        Autaliza Usuário: "{{ user.id }}"
+    {% else %}
+        Novo Usuário
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <form method="post">
+            {% csrf_token %}
+            <fieldset class="fieldset-forms row col-6">
+                <legend class="">
+                    {% if accounts %}
+                        Atualiza Usuário: "{{ user.id }}"
+                    {% else %}
+                        Novo Usuário
+                    {% endif %}
+                </legend>
+                {{ form.non_field_errors }}
+                <div class="fieldWrapper col-12">
+                    <label for="{{ form.username.id_for_label }}" class="form-label">{{ form.username.label }}</label>
+                    {{ form.username.errors }}
+                    {{ form.username|add_class:'form-control' }}
+                    <span class="helptext">{{ form.username.help_text }}</span>
+                </div>
+                <div class="fieldWrapper col-12">
+                    <label for="{{ form.email.id_for_label }}" class="form-label">{{ form.email.label }}</label>
+                    {{ form.email.errors }}
+                    {{ form.email|add_class:'form-control' }}
+                    <span class="helptext">{{ form.email.help_text }}</span>
+                </div>
+                <div class="fieldWrapper col-12">
+                    <label for="{{ form.password1.id_for_label }}" class="form-label">{{ form.password1.label }}</label>
+                    {{ form.password1.errors }}
+                    {{ form.password1|add_class:'form-control' }}
+                    <span class="helptext">{{ form.password1.help_text }}</span>
+                </div>
+                <div class="fieldWrapper col-12">
+                    <label for="{{ form.password2.id_for_label }}" class="form-label">{{ form.password2.label }}</label>
+                    {{ form.password2.errors }}
+                    {{ form.password2|add_class:'form-control' }}
+                    <span class="helptext">{{ form.password2.help_text }}</span>
+                </div>
+                <div class="fieldWrapper col-12">
+                    <label for="{{ form.group.id_for_label }}" class="form-label">{{ form.group.label }}</label>
+                    {{ form.group.errors }}
+                    {{ form.group|add_class:'form-control' }}
+                    <span class="helptext">{{ form.group.help_text }}</span>
+                </div>
+            </fieldset>
+            <br>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">
+                    <span class="material-icons align-middle">save</span>
+                    <span class="align-middle">Salvar</span>
+                </button>
+                <a class="btn btn-secondary" href="{% url 'tickets:list' %}" alt="ver" >
+                    <span class="material-icons md-18 align-middle">arrow_back</span>
+                    <span>voltar</span>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block js_internal_include %}
+{% endblock %}

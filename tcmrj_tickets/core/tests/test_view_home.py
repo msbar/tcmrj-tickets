@@ -46,5 +46,5 @@ class HomeTest(TestCase):
     
     def test_logout_link(self):
         """Must have tickets list link"""
-        expected = 'href="{}"'.format(r('account:logout'))
+        expected = 'href="{}"'.format(r('accounts:logout'))
         self.assertContains(self.response, expected)

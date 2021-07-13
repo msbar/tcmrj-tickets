@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Criado em')),
                 ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Atualizado em')),
                 ('name', models.CharField(max_length=255, verbose_name='Responsável')),
-                ('owner', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to=settings.AUTH_USER_MODEL, verbose_name='Criado por')),
+                ('created_by', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to=settings.AUTH_USER_MODEL, verbose_name='Criado por')),
             ],
             options={
                 'verbose_name': 'Responsável',
@@ -39,7 +39,7 @@ class Migration(migrations.Migration):
                 ('status', models.CharField(choices=[('Aberto', 'Aberto'), ('Em Andamento', 'Em Andamento'), ('Concluído', 'Concluído')], default='Aberto', max_length=12, verbose_name='Status')),
                 ('description', models.TextField(verbose_name='Descrição')),
                 ('category', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, related_name='tickets_category', to='category.category', verbose_name='Categoria')),
-                ('owner', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to=settings.AUTH_USER_MODEL, verbose_name='Criado por')),
+                ('created_by', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to=settings.AUTH_USER_MODEL, verbose_name='Criado por')),
                 ('solver', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='tickets.solver', verbose_name='Responsável')),
                 ('subcategory', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.DO_NOTHING, related_name='tickets_subcategory', to='category.subcategory', verbose_name='Sub Categoria')),
             ],

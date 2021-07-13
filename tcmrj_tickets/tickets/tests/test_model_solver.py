@@ -12,7 +12,7 @@ class SolverModelTest(TestCase):
 
         self.solver = Solver.objects.create(
             name = 'José',
-            owner = self.user
+            created_by = self.user
         )
 
     def test_create(self):

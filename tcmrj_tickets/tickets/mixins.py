@@ -1,11 +1,6 @@
 from tcmrj_tickets.tickets.forms import TicketForm, TicketManagerForm, TicketBasicForm
 from tcmrj_tickets.tickets.models import Ticket
 
-# define o ticket owner com request user
-class OwnerTicketCreateMixin(object):
-    def form_valid(self, form):
-        form.instance.owner = self.request.user
-        return super().form_valid(form)
 
 # decide qual formulário será apresentado para o gestor e para o suporte
 class TicketUpdateMixin(object):
@@ -18,6 +13,6 @@ class TicketUpdateMixin(object):
 class TicketListMixin(object):
     def get_queryset(self):
         if self.request.user.groups.filter(name__in=['padrao']).exists():
-            return Ticket.objects.filter(owner=self.request.user)
+            return Ticket.objects.filter(created_by=self.request.user)
         else:
             return Ticket.objects.all()

@@ -12,7 +12,7 @@ class CategoryModelTest(TestCase):
 
         self.category = Category.objects.create(
             name = 'Ar-condicionado',
-            owner = self.user,
+            created_by = self.user,
         )
 
     def test_create(self):
